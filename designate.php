@@ -39,10 +39,14 @@ function designate_stylesheet($use_ids = false) {
 		}
 		
 		if (strlen($slug) > 0) {
-			printf(
-				"<link type=\"text/css\" rel=\"stylesheet\" src=\"%s\" />\n\n",
-				content_url("post-styles/$slug.css")
-			);
+			$location = "/post-styles/$slug.css";
+			
+			if (file_exists(WP_CONTENT_DIR . $location)) {
+				printf(
+					"<link type=\"text/css\" rel=\"stylesheet\" src=\"%s\" />\n\n",
+					content_url($location)
+				);
+			}
 		}	
 	}
 }
