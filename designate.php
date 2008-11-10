@@ -43,7 +43,7 @@ function designate_stylesheet($use_ids = false) {
 			
 			if (file_exists(WP_CONTENT_DIR . $location)) {
 				printf(
-					"<link type=\"text/css\" rel=\"stylesheet\" src=\"%s\" />\n\n",
+					"<link type=\"text/css\" rel=\"stylesheet\" href=\"%s\" />\n\n",
 					content_url($location)
 				);
 			}
