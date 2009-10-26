@@ -25,30 +25,30 @@ Author URI: http://extralogical.net/
  * @param boolean $use_ids
  */
 function designate_stylesheet($use_ids = false) {
-	global $post;
-	
-	if (is_home() && have_posts() || is_single() || is_page()) {
-		$custom = get_post_meta($post->ID, 'stylesheet', true);
-		
-		if ($custom && strlen($custom) > 0) {
-			$slug = preg_replace('/\.css$/', '', $custom);
-		} elseif ($post->post_name && !$use_ids) {
-			$slug = $post->post_name;
-		} else {
-			$slug = 'post-style-' . $post->ID;
-		}
-		
-		if (strlen($slug) > 0) {
-			$location = "/post-styles/$slug.css";
-			
-			if (file_exists(WP_CONTENT_DIR . $location)) {
-				printf(
-					"<link type=\"text/css\" rel=\"stylesheet\" href=\"%s\" />\n\n",
-					content_url($location)
-				);
-			}
-		}	
-	}
+    global $post;
+    
+    if (is_home() && have_posts() || is_single() || is_page()) {
+        $custom = get_post_meta($post->ID, 'stylesheet', true);
+        
+        if ($custom && strlen($custom) > 0) {
+            $slug = preg_replace('/\.css$/', '', $custom);
+        } elseif ($post->post_name && !$use_ids) {
+            $slug = $post->post_name;
+        } else {
+            $slug = 'post-style-' . $post->ID;
+        }
+        
+        if (strlen($slug) > 0) {
+            $location = "/post-styles/$slug.css";
+            
+            if (file_exists(WP_CONTENT_DIR . $location)) {
+                printf(
+                    "<link type=\"text/css\" rel=\"stylesheet\" href=\"%s\" />\n\n",
+                    content_url($location)
+                );
+            }
+        }
+    }
 }
 
 add_action('wp_head', 'designate_stylesheet');
