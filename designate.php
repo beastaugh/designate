@@ -49,7 +49,8 @@ function designate_stylesheet() {
     
     if ($custom && strlen($custom) > 0)
         $slug = preg_replace('/\.css$/', '', $custom);
-    elseif ($post->post_name && DESIGNATE_USE_POST_SLUGS === true)
+    elseif ($post->post_name && DESIGNATE_USE_POST_SLUGS === true &&
+            preg_match('/%postname%/', get_option('permalink_structure')))
         $slug = $post->post_name;
     else
         $slug = 'post-style-' . $post->ID;
