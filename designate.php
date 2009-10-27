@@ -6,6 +6,9 @@ Description: Add a per-post stylesheet to customise every post.
 Author: Benedict Eastaugh
 Version: 1.1
 Author URI: http://extralogical.net/
+.
+Designate is released under the GPL. Please see the LICENCE file for details.
+.
 */
 
 /**
